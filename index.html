@@ -26,40 +26,42 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-bg" role="img" aria-label="Commercial plumbing and PHE installation project"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <p class="eyebrow">Bangalore Plumbing, PHE & Water Systems</p>
-          <h1 id="hero-title">PlumbPro Tech Private Limited</h1>
-          <p class="hero-copy">
-            Professional design, build, consulting, contracting, maintenance, swimming pool, water body,
-            solar, rainwater harvesting, borewell networking, and GPS water meter installation.
-          </p>
-          <div class="hero-actions">
-            <a class="primary-btn" href="#projects">View Projects</a>
-            <a class="secondary-btn" href="assets/plumbpro-tech-profile-2026.pdf" download>Download Profile</a>
-          </div>
+        <div class="hero-slider" data-hero-slider aria-label="Project image slider">
+          <div
+            class="hero-slide active"
+            style="background-image: url('assets/image-32-899x691.jpg')"
+            role="img"
+            aria-label="Commercial plumbing and PHE installation project"
+          ></div>
+          <div
+            class="hero-slide"
+            style="background-image: url('assets/image-79-693x440.jpg')"
+            role="img"
+            aria-label="Water treatment plant and piping installation"
+          ></div>
+          <div
+            class="hero-slide"
+            style="background-image: url('assets/image-51-747x418.jpg')"
+            role="img"
+            aria-label="Finished swimming pool outcome"
+          ></div>
+          <div
+            class="hero-slide"
+            style="background-image: url('assets/image-62-899x690.jpg')"
+            role="img"
+            aria-label="Organized plumbing network installation"
+          ></div>
         </div>
-        <div class="hero-panel" aria-label="Service highlights">
-          <div>
-            <span>01</span>
-            <strong>Design & Build</strong>
-            <p>Consulting, contractor services, PHE plant, equipment installation, and technical advice.</p>
-          </div>
-          <div>
-            <span>02</span>
-            <strong>Water Infrastructure</strong>
-            <p>Swimming pools, water bodies, rainwater harvesting, borewell networking, and subsoil drains.</p>
-          </div>
-          <div>
-            <span>03</span>
-            <strong>Site Maintenance</strong>
-            <p>Skilled plumbing professionals for quick fixes, maintenance, and quality workmanship.</p>
-          </div>
+        <div class="hero-overlay"></div>
+        <h1 id="hero-title" class="sr-only">PlumbPro Tech Private Limited</h1>
+        <div class="slider-controls" aria-label="Slider controls">
+          <button type="button" data-slide-prev aria-label="Previous slide">&lsaquo;</button>
+          <div class="slider-dots" data-slider-dots aria-label="Slide indicators"></div>
+          <button type="button" data-slide-next aria-label="Next slide">&rsaquo;</button>
         </div>
       </section>
 
-      <section class="intro band">
+      <section class="intro band reveal">
         <div class="section-kicker">Vision</div>
         <div class="intro-grid">
           <h2>Trusted plumbing systems for homes, businesses, communities, and high-demand sites.</h2>
@@ -71,7 +73,7 @@
         </div>
       </section>
 
-      <section class="services" id="services" aria-labelledby="services-title">
+      <section class="services reveal" id="services" aria-labelledby="services-title">
         <div class="section-heading">
           <p class="section-kicker">Services</p>
           <h2 id="services-title">Built for the whole water path</h2>
@@ -81,7 +83,7 @@
             <img src="assets/image-32-899x691.jpg" alt="Overhead commercial plumbing pipe installation" />
             <div>
               <h3>Plumbing & PHE Works</h3>
-              <p>Residential, commercial, IT building, fit-out, hotel, mall, PHE plant, and equipment works.</p>
+              <p>Residential, commercial, IT building, fit-out, hotel, mall, PHE plant, and contractor works.</p>
             </div>
           </article>
           <article>
@@ -101,14 +103,14 @@
           <article>
             <img src="assets/image-57-625x910.jpg" alt="Pressure gauge and vertical pipe installation" />
             <div>
-              <h3>Consulting & Maintenance</h3>
-              <p>Technical advice, PHE consultancy, maintenance teams, quick fixes, and GPS water meter installs.</p>
+              <h3>Basement & Podium Drain Works</h3>
+              <p>Sub soil drain works for basement, podium, and high-demand building infrastructure.</p>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="proof band">
+      <section class="proof band reveal">
         <div class="proof-copy">
           <p class="section-kicker">Workmanship</p>
           <h2>From initial contact through final installation.</h2>
@@ -123,7 +125,7 @@
         </div>
       </section>
 
-      <section class="projects" id="projects" aria-labelledby="projects-title">
+      <section class="projects reveal" id="projects" aria-labelledby="projects-title">
         <div class="section-heading compact">
           <p class="section-kicker">Portfolio</p>
           <h2 id="projects-title">Projects wrapped up and running</h2>
@@ -179,7 +181,7 @@
         </div>
       </section>
 
-      <section class="outcomes" id="outcomes" aria-labelledby="outcomes-title">
+      <section class="outcomes reveal" id="outcomes" aria-labelledby="outcomes-title">
         <div class="section-heading">
           <p class="section-kicker">Outcomes</p>
           <h2 id="outcomes-title">Material storage to astonishing outcomes</h2>
@@ -208,7 +210,7 @@
         </div>
       </section>
 
-      <section class="contact band" id="contact" aria-labelledby="contact-title">
+      <section class="contact band reveal" id="contact" aria-labelledby="contact-title">
         <div>
           <p class="section-kicker">Bangalore</p>
           <h2 id="contact-title">Clean water flow, stronger systems, and cleaner handovers.</h2>
@@ -243,12 +245,11 @@
               <span>Service</span>
               <select name="service" required>
                 <option value="">Select service</option>
-                <option>Plumbing & PHE Works</option>
-                <option>Swimming Pool / Water Body</option>
-                <option>Rainwater Harvesting</option>
-                <option>Borewell Networking</option>
-                <option>Maintenance / Quick Fix</option>
-                <option>Consulting / Design & Build</option>
+                <option>Plumbing & PHE contractor</option>
+                <option>Swimming pools</option>
+                <option>Water body</option>
+                <option>Rain water harvesting work</option>
+                <option>Basement and Podium Sub soil Drain work</option>
               </select>
             </label>
             <label>
