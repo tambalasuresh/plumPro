@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Contact PlumbPro Tech Private Limited." />
+    <title>Contact | PlumbPro Tech</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="index.html" aria-label="PlumbPro Tech home">
+        <img src="assets/image-7-449x151.jpg" alt="PlumbPro Tech Private Limited" />
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="careers.html">Careers</a>
+        <a class="is-active" href="contact.html">Contact</a>
+      </nav>
+      <a class="header-action" href="assets/plumbpro-tech-profile-2026.pdf" download>Company Profile</a>
+      <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main>
+      <section class="contact band reveal page-view is-active" aria-labelledby="contact-title">
+        <div>
+          <div class="section-heading">
+            <p class="section-kicker">Bangalore</p>
+            <h1 id="contact-title">Clean water flow, stronger systems, and cleaner handovers.</h1>
+          </div>
+          <p class="contact-copy">
+            Share your project details and send them directly to PlumbPro Tech on WhatsApp.
+          </p>
+        </div>
+        <div class="contact-card">
+          <img src="assets/image-7-449x151.jpg" alt="PlumbPro Tech logo" />
+          <form class="contact-form" data-contact-form>
+            <label>
+              <span>Contact Person Name</span>
+              <input type="text" name="contactPerson" autocomplete="name" required />
+            </label>
+            <label>
+              <span>Name of Company</span>
+              <input type="text" name="companyName" autocomplete="organization" required />
+            </label>
+            <label>
+              <span>Phone Number</span>
+              <input type="tel" name="phone" autocomplete="tel" required />
+            </label>
+            <label>
+              <span>Email ID</span>
+              <input type="email" name="email" autocomplete="email" />
+            </label>
+            <label>
+              <span>Service Required Location and Address</span>
+              <textarea name="address" rows="3" placeholder="Site location and full address" required></textarea>
+            </label>
+            <label>
+              <span>Service</span>
+              <select name="service" required>
+                <option value="">Select service</option>
+                <option>Plumbing & PHE contractor</option>
+                <option>Swimming pools</option>
+                <option>Water body</option>
+                <option>Rain water harvesting work</option>
+                <option>Basement and Podium Sub soil Drain work</option>
+              </select>
+            </label>
+            <label>
+              <span>Project Details</span>
+              <textarea name="projectDetails" rows="4" placeholder="Scope, timeline, requirements..." required></textarea>
+            </label>
+            <button class="primary-btn" type="submit">Send Enquiry</button>
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+            <a class="secondary-link" href="assets/plumbpro-tech-profile-2026.pdf" download>Download Company Profile</a>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <button class="to-top" data-top type="button" aria-label="Back to top">&uarr;</button>
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <img src="assets/image-7-449x151.jpg" alt="PlumbPro Tech Private Limited" />
+        <span>Plumbing, PHE, pools, water bodies, and infrastructure works.</span>
+      </div>
+      <div class="footer-meta">
+        <a href="assets/plumbpro-tech-profile-2026.pdf" download>Company Profile</a>
+        <span>&copy;2026 PlumbPro Tech Private Limited.</span>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
