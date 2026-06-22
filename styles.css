@@ -1070,6 +1070,57 @@ section {
   text-align: center;
 }
 
+.application-toast {
+  position: fixed;
+  z-index: 150;
+  right: 22px;
+  bottom: 22px;
+  display: flex;
+  min-width: min(390px, calc(100vw - 36px));
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  color: #fff;
+  background: #071f33;
+  box-shadow: 0 20px 60px rgba(3, 18, 29, 0.34);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(24px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.application-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.application-toast-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--deep-blue);
+  background: var(--amber);
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+.application-toast div {
+  display: grid;
+  line-height: 1.35;
+}
+
+.application-toast strong {
+  font-size: 0.92rem;
+}
+
+.application-toast small {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+}
+
 .success-page {
   min-height: 100vh;
   background: linear-gradient(145deg, #eef8fa, #fff 55%, #edf7f2);
@@ -1131,6 +1182,13 @@ section {
   .success-actions {
     flex-direction: column;
     gap: 12px;
+  }
+
+  .application-toast {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    min-width: 0;
   }
 }
 

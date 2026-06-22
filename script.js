@@ -6,6 +6,8 @@ const contactForm = document.querySelector("[data-contact-form]");
 const formStatus = document.querySelector("[data-form-status]");
 const jobPosition = document.querySelector("[data-job-position]");
 const jobApplyButtons = document.querySelectorAll("[data-job]");
+const emailApplicationForm = document.querySelector("[data-email-application-form]");
+const applicationToast = document.querySelector("[data-application-toast]");
 const careerModal = document.querySelector("[data-career-modal]");
 const modalCloseButtons = document.querySelectorAll("[data-modal-close]");
 const modalJobTitle = document.querySelector("[data-modal-job-title]");
@@ -168,6 +170,19 @@ const closeCareerModal = () => {
 };
 
 modalCloseButtons.forEach((button) => button.addEventListener("click", closeCareerModal));
+
+emailApplicationForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const submitButton = emailApplicationForm.querySelector('[type="submit"]');
+
+  applicationToast?.classList.add("is-visible");
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending Application...";
+  }
+
+  window.setTimeout(() => emailApplicationForm.submit(), 850);
+});
 
 contactForm?.addEventListener("submit", (event) => {
   event.preventDefault();
