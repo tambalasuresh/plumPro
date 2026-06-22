@@ -74,7 +74,16 @@
             <h2 id="application-title" data-modal-job-title>Join PlumbPro Tech</h2>
             <small>Bangalore &middot; Full time</small>
           </div>
-          <form class="application-form" data-application-form>
+          <form
+            class="application-form"
+            action="https://formsubmit.co/suresht2127@gmail.com"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <input type="hidden" name="_subject" value="New PlumbPro Tech Job Application" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input class="form-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" />
             <label>
               <span>Position</span>
               <select name="position" data-job-position required>
@@ -109,14 +118,14 @@
             </label>
             <label>
               <span>Resume Upload</span>
-              <input type="file" name="resume" accept=".pdf,.doc,.docx" required />
+              <input type="file" name="attachment" accept=".pdf,.doc,.docx" required />
             </label>
             <label>
               <span>Message</span>
               <textarea name="message" rows="4" placeholder="Tell us about your site/project experience"></textarea>
             </label>
-            <button class="primary-btn" type="submit">Continue on WhatsApp <span aria-hidden="true">&#8599;</span></button>
-            <p class="form-status" data-application-status role="status" aria-live="polite"></p>
+            <button class="primary-btn" type="submit">Email Application &amp; Resume <span aria-hidden="true">&#8599;</span></button>
+            <p class="form-delivery-note">Your details and selected resume will be emailed to our hiring team.</p>
           </form>
         </div>
       </div>

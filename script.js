@@ -4,8 +4,6 @@ const filters = document.querySelectorAll(".filter");
 const projects = document.querySelectorAll("[data-project-grid] article");
 const contactForm = document.querySelector("[data-contact-form]");
 const formStatus = document.querySelector("[data-form-status]");
-const applicationForm = document.querySelector("[data-application-form]");
-const applicationStatus = document.querySelector("[data-application-status]");
 const jobPosition = document.querySelector("[data-job-position]");
 const jobApplyButtons = document.querySelectorAll("[data-job]");
 const careerModal = document.querySelector("[data-career-modal]");
@@ -205,43 +203,6 @@ contactForm?.addEventListener("submit", (event) => {
     formStatus.textContent = whatsAppWindow
       ? "Your enquiry is ready in WhatsApp. The form has been cleared."
       : "Please allow popups, then send again. Your form has been cleared.";
-  }
-});
-
-applicationForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const formData = new FormData(applicationForm);
-  const position = String(formData.get("position")).trim();
-  const fullName = String(formData.get("fullName")).trim();
-  const phone = String(formData.get("phone")).trim();
-  const email = String(formData.get("email")).trim();
-  const experience = String(formData.get("experience")).trim();
-  const resume = formData.get("resume");
-  const resumeName = resume && "name" in resume ? resume.name : "Not attached";
-  const message = String(formData.get("message")).trim() || "Not provided";
-
-  const applicationMessage = [
-    "New PlumbPro Tech job application",
-    "",
-    `Position: ${position}`,
-    `Full Name: ${fullName}`,
-    `Phone: ${phone}`,
-    `Email ID: ${email}`,
-    `Experience: ${experience}`,
-    `Resume File: ${resumeName}`,
-    "",
-    `Message: ${message}`,
-  ].join("\n");
-
-  const whatsAppUrl = `https://wa.me/${whatsAppNumber}?text=${encodeURIComponent(applicationMessage)}`;
-  const whatsAppWindow = window.open(whatsAppUrl, "_blank");
-
-  if (applicationStatus) {
-    applicationStatus.classList.toggle("is-error", !whatsAppWindow);
-    applicationStatus.textContent = whatsAppWindow
-      ? "Your application details are ready in WhatsApp. Please attach the selected resume in the chat before sending."
-      : "Please allow popups, then submit again. Keep your resume ready to attach in WhatsApp.";
   }
 });
 
