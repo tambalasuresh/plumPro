@@ -30,48 +30,49 @@
     </header>
 
     <main>
-      <section class="careers reveal page-view is-active" aria-labelledby="careers-title">
-        <div class="section-heading">
-          <p class="section-kicker">Careers</p>
-          <h1 id="careers-title">Build practical systems with a team that values clean execution.</h1>
-        </div>
-        <div class="career-hero">
+      <section class="careers careers-studio page-view is-active" aria-labelledby="careers-title">
+        <div class="career-banner reveal">
           <div>
-            <p>
-              PlumbPro Tech looks for site-focused professionals who care about planning, workmanship,
-              coordination, and reliable handovers across plumbing, PHE, pool, and infrastructure projects.
-            </p>
+            <p class="section-kicker">Join the crew</p>
+            <h1 id="careers-title">Good work is built<br />by <em>good people.</em></h1>
+            <p>Bring your field experience, practical thinking, and pride in clean execution. We’ll bring ambitious projects and a team that has your back.</p>
           </div>
-          <img src="assets/image-57-625x910.jpg" alt="Plumbing pressure gauge installation" />
+          <div class="career-banner-image">
+            <img src="assets/image-57-625x910.jpg" alt="Plumbing pressure gauge installation" />
+            <span>We’re<br />hiring</span>
+          </div>
         </div>
-        <div class="career-grid" aria-label="Career areas">
+
+        <div class="open-roles-heading reveal">
+          <p class="section-kicker">Open positions</p>
+          <h2>Find your place on the team.</h2>
+          <span>03 roles / Bangalore</span>
+        </div>
+        <div class="career-grid career-role-list" aria-label="Open positions">
           <article class="career-card">
-            <span>Site</span>
-            <h2>Project Supervisors</h2>
-            <p>Coordinate teams, material movement, site progress, and quality checks.</p>
-            <button class="job-apply" type="button" data-job="Project Supervisor">Apply</button>
+            <span class="role-index">01</span><div><span>Site &middot; Full time</span><h2>Project Supervisor</h2><p>Own site coordination, material movement, daily progress, and quality checks.</p><div class="role-tags"><b>Leadership</b><b>Site execution</b></div></div>
+            <button class="job-apply" type="button" data-job="Project Supervisor" data-job-label="Site Operations">Apply <span aria-hidden="true">&#8599;</span></button>
           </article>
           <article class="career-card">
-            <span>Execution</span>
-            <h2>Plumbing Technicians</h2>
-            <p>Install, align, test, and finish internal and external plumbing systems.</p>
-            <button class="job-apply" type="button" data-job="Plumbing Technician">Apply</button>
+            <span class="role-index">02</span><div><span>Execution &middot; Full time</span><h2>Plumbing Technician</h2><p>Install, align, test, and finish internal and external plumbing systems.</p><div class="role-tags"><b>Installation</b><b>Testing</b></div></div>
+            <button class="job-apply" type="button" data-job="Plumbing Technician" data-job-label="Field Execution">Apply <span aria-hidden="true">&#8599;</span></button>
           </article>
           <article class="career-card">
-            <span>Planning</span>
-            <h2>PHE Coordinators</h2>
-            <p>Read drawings, track dependencies, and support clean project delivery.</p>
-            <button class="job-apply" type="button" data-job="PHE Coordinator">Apply</button>
+            <span class="role-index">03</span><div><span>Planning &middot; Full time</span><h2>PHE Coordinator</h2><p>Read drawings, track dependencies, and coordinate teams for smooth delivery.</p><div class="role-tags"><b>Drawings</b><b>Coordination</b></div></div>
+            <button class="job-apply" type="button" data-job="PHE Coordinator" data-job-label="Planning &amp; Coordination">Apply <span aria-hidden="true">&#8599;</span></button>
           </article>
         </div>
-        <div class="application-panel reveal from-bottom" id="apply">
-          <div>
-            <p class="section-kicker">Apply Now</p>
-            <h2>Share your details and upload your resume.</h2>
-            <p>
-              The form prepares your application details on WhatsApp. Attach your resume from the file field
-              before sending or keep it ready to share in the WhatsApp chat.
-            </p>
+      </section>
+
+      <div class="career-modal" data-career-modal hidden role="dialog" aria-modal="true" aria-labelledby="application-title">
+        <div class="career-modal-backdrop" data-modal-close></div>
+        <div class="career-modal-panel">
+          <button class="career-modal-close" type="button" data-modal-close aria-label="Close application form">&times;</button>
+          <div class="career-modal-intro">
+            <span data-modal-role-label>Open position</span>
+            <p>Application for</p>
+            <h2 id="application-title" data-modal-job-title>Join PlumbPro Tech</h2>
+            <small>Bangalore &middot; Full time</small>
           </div>
           <form class="application-form" data-application-form>
             <label>
@@ -114,23 +115,16 @@
               <span>Message</span>
               <textarea name="message" rows="4" placeholder="Tell us about your site/project experience"></textarea>
             </label>
-            <button class="primary-btn" type="submit">Submit Application</button>
+            <button class="primary-btn" type="submit">Continue on WhatsApp <span aria-hidden="true">&#8599;</span></button>
             <p class="form-status" data-application-status role="status" aria-live="polite"></p>
           </form>
         </div>
-      </section>
+      </div>
     </main>
 
     <button class="to-top" data-top type="button" aria-label="Back to top">&uarr;</button>
     <footer class="site-footer">
-      <div class="footer-brand">
-        <img src="assets/image-7-449x151.jpg" alt="PlumbPro Tech Private Limited" />
-        <span>Plumbing, PHE, pools, water bodies, and infrastructure works.</span>
-      </div>
-      <div class="footer-meta">
-        <a href="assets/plumbpro-tech-profile-2026.pdf" download>Company Profile</a>
-        <span>&copy;2026 PlumbPro Tech Private Limited.</span>
-      </div>
+      <span class="footer-copyright">&copy;2026 PlumbPro Tech Private Limited.</span>
     </footer>
     <script src="script.js"></script>
   </body>

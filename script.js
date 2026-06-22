@@ -8,6 +8,10 @@ const applicationForm = document.querySelector("[data-application-form]");
 const applicationStatus = document.querySelector("[data-application-status]");
 const jobPosition = document.querySelector("[data-job-position]");
 const jobApplyButtons = document.querySelectorAll("[data-job]");
+const careerModal = document.querySelector("[data-career-modal]");
+const modalCloseButtons = document.querySelectorAll("[data-modal-close]");
+const modalJobTitle = document.querySelector("[data-modal-job-title]");
+const modalRoleLabel = document.querySelector("[data-modal-role-label]");
 const lightbox = document.querySelector("[data-lightbox]");
 const lightboxImage = document.querySelector("[data-lightbox-image]");
 const lightboxCaption = document.querySelector("[data-lightbox-caption]");
@@ -136,6 +140,7 @@ lightbox?.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeLightbox();
+    closeCareerModal();
   }
 });
 
@@ -144,9 +149,27 @@ jobApplyButtons.forEach((button) => {
     if (jobPosition) {
       jobPosition.value = button.dataset.job || "";
     }
-    document.querySelector("#apply")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (modalJobTitle) {
+      modalJobTitle.textContent = button.dataset.job || "Join PlumbPro Tech";
+    }
+    if (modalRoleLabel) {
+      modalRoleLabel.textContent = button.dataset.jobLabel || "Open position";
+    }
+    if (careerModal) {
+      careerModal.hidden = false;
+      document.body.classList.add("is-modal-open");
+      careerModal.querySelector("input")?.focus();
+    }
   });
 });
+
+const closeCareerModal = () => {
+  if (!careerModal) return;
+  careerModal.hidden = true;
+  document.body.classList.remove("is-modal-open");
+};
+
+modalCloseButtons.forEach((button) => button.addEventListener("click", closeCareerModal));
 
 contactForm?.addEventListener("submit", (event) => {
   event.preventDefault();
