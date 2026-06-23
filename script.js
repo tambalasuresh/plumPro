@@ -23,12 +23,31 @@ const prevSlideButton = document.querySelector("[data-slide-prev]");
 const nextSlideButton = document.querySelector("[data-slide-next]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const navLinks = document.querySelector(".nav-links");
+const profileMenus = document.querySelectorAll(".profile-menu");
 const revealItems = document.querySelectorAll(
   ".reveal, .service-grid article, .project-grid article, .outcome-grid figure, .gallery-grid figure, .career-card, .application-panel"
 );
 const whatsAppNumber = "919840038641";
 let currentSlide = 0;
 let slideTimer;
+
+document.addEventListener("click", (event) => {
+  if (event.target.closest(".profile-menu")) {
+    return;
+  }
+
+  profileMenus.forEach((menu) => {
+    menu.open = false;
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    profileMenus.forEach((menu) => {
+      menu.open = false;
+    });
+  }
+});
 
 const updateChrome = () => {
   const scrolled = window.scrollY > 40;
