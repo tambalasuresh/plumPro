@@ -21,6 +21,7 @@ const slides = document.querySelectorAll(".hero-slide");
 const dotsContainer = document.querySelector("[data-slider-dots]");
 const prevSlideButton = document.querySelector("[data-slide-prev]");
 const nextSlideButton = document.querySelector("[data-slide-next]");
+const currentSlideLabel = document.querySelector("[data-slide-current]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const navLinks = document.querySelector(".nav-links");
 const profileMenus = document.querySelectorAll(".profile-menu");
@@ -74,10 +75,14 @@ const showSlide = (index) => {
   currentSlide = (index + slides.length) % slides.length;
   slides.forEach((slide, slideIndex) => {
     slide.classList.toggle("active", slideIndex === currentSlide);
+    slide.setAttribute("aria-hidden", String(slideIndex !== currentSlide));
   });
   dotsContainer?.querySelectorAll("button").forEach((dot, dotIndex) => {
     dot.classList.toggle("active", dotIndex === currentSlide);
   });
+  if (currentSlideLabel) {
+    currentSlideLabel.textContent = String(currentSlide + 1).padStart(2, "0");
+  }
 };
 
 const startSlider = () => {
