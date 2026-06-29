@@ -1831,14 +1831,28 @@ section {
   font-size: 1.05rem;
 }
 
+.application-success .success-greeting {
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-size: clamp(1.12rem, 2vw, 1.45rem);
+  font-weight: 900;
+}
+
 .success-actions {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 14px;
   margin-top: 22px;
 }
 
+.success-back-btn {
+  cursor: pointer;
+}
+
 .success-home-link {
+  margin-left: 8px;
   padding: 10px 0;
   border-bottom: 2px solid var(--ink);
   font-weight: 900;
@@ -1848,6 +1862,10 @@ section {
   .success-actions {
     flex-direction: column;
     gap: 12px;
+  }
+
+  .success-home-link {
+    margin-left: 0;
   }
 
   .application-toast {

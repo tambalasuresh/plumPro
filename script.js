@@ -24,6 +24,7 @@ const nextSlideButton = document.querySelector("[data-slide-next]");
 const currentSlideLabel = document.querySelector("[data-slide-current]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const navLinks = document.querySelector(".nav-links");
+const historyBackButton = document.querySelector("[data-history-back]");
 const profileMenus = document.querySelectorAll(".profile-menu");
 const revealItems = document.querySelectorAll(
   ".reveal, .service-grid article, .project-grid article, .outcome-grid figure, .gallery-grid figure, .career-card, .application-panel"
@@ -195,13 +196,28 @@ const closeCareerModal = () => {
 
 modalCloseButtons.forEach((button) => button.addEventListener("click", closeCareerModal));
 
+historyBackButton?.addEventListener("click", () => {
+  if (window.history.length > 1) {
+    window.history.back();
+    return;
+  }
+
+  window.location.href = "careers.html";
+});
+
 emailApplicationForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   const submitButton = emailApplicationForm.querySelector('[type="submit"]');
   const subjectInput = emailApplicationForm.querySelector("[data-application-subject]");
+  const applicantNameInput = emailApplicationForm.querySelector("[data-applicant-name]");
+  const fullNameCopy = emailApplicationForm.querySelector("[data-full-name-copy]");
   const formData = new FormData(emailApplicationForm);
-  const applicantName = String(formData.get("Full Name") || "").trim();
+  const applicantName = String(formData.get("name") || "").trim();
   const position = String(formData.get("Position") || "").trim();
+
+  if (fullNameCopy) {
+    fullNameCopy.value = applicantName;
+  }
 
   if (subjectInput) {
     subjectInput.value = [
@@ -216,6 +232,7 @@ emailApplicationForm?.addEventListener("submit", (event) => {
     submitButton.disabled = true;
     submitButton.textContent = "Sending Application...";
   }
+  applicantNameInput?.setAttribute("name", "name");
 
   window.setTimeout(() => emailApplicationForm.submit(), 850);
 });
