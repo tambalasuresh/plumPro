@@ -52,7 +52,7 @@
         <div class="open-roles-heading reveal">
           <p class="section-kicker">Open positions</p>
           <h2>Find your place on the team.</h2>
-          <span>04 roles / Bangalore</span>
+          <span>05 roles / Bangalore</span>
         </div>
         <div class="career-grid career-role-list" aria-label="Open positions">
           <article class="career-card">
@@ -68,7 +68,11 @@
             <button class="job-apply" type="button" data-job="PHE Coordinator" data-job-label="Planning &amp; Coordination">Apply <span aria-hidden="true">&#8599;</span></button>
           </article>
           <article class="career-card">
-            <span class="role-index">04</span><div><span>Finance &middot; Full time</span><h2>Accountant</h2><p>Manage day-to-day accounts, invoices, reconciliations, and financial records.</p><div class="role-tags"><b>Accounting</b><b>Reconciliation</b></div></div>
+            <span class="role-index">04</span><div><span>Projects &middot; Full time</span><h2>Project Manager</h2><p>Lead project planning, client coordination, site teams, schedules, billing support, and quality delivery.</p><div class="role-tags"><b>Project delivery</b><b>Client coordination</b></div></div>
+            <button class="job-apply" type="button" data-job="Project Manager" data-job-label="Project Management">Apply <span aria-hidden="true">&#8599;</span></button>
+          </article>
+          <article class="career-card">
+            <span class="role-index">05</span><div><span>Finance &middot; Full time</span><h2>Accountant</h2><p>Manage day-to-day accounts, invoices, reconciliations, and financial records.</p><div class="role-tags"><b>Accounting</b><b>Reconciliation</b></div></div>
             <button class="job-apply" type="button" data-job="Accountant" data-job-label="Finance &amp; Accounts">Apply <span aria-hidden="true">&#8599;</span></button>
           </article>
         </div>
@@ -87,41 +91,42 @@
           <form
             class="application-form"
             data-email-application-form
-            action="https://formsubmit.co/Infoplumbprotech@gmail.com"
+            action="https://formsubmit.co/suresht2127@gmail.com"
             method="POST"
             enctype="multipart/form-data"
           >
-            <input type="hidden" name="_subject" value="New PlumbPro Tech Job Application" />
+            <input type="hidden" name="_subject" value="New PlumbPro Tech Job Application" data-application-subject />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_next" value="https://m-pro.vercel.app/application-success.html" />
             <input class="form-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" />
             <label>
               <span>Position</span>
-              <select name="position" data-job-position required>
+              <select name="Position" data-job-position required>
                 <option value="">Select position</option>
                 <option>Project Supervisor</option>
                 <option>Plumbing Technician</option>
                 <option>PHE Coordinator</option>
+                <option>Project Manager</option>
                 <option>Accountant</option>
                 <option>General Application</option>
               </select>
             </label>
             <label>
               <span>Full Name</span>
-              <input type="text" name="fullName" autocomplete="name" required />
+              <input type="text" name="Full Name" autocomplete="name" required />
             </label>
             <label>
               <span>Phone Number</span>
-              <input type="tel" name="phone" autocomplete="tel" required />
+              <input type="tel" name="Phone" autocomplete="tel" required />
             </label>
             <label>
               <span>Email ID</span>
-              <input type="email" name="email" autocomplete="email" required />
+              <input type="email" name="Email" autocomplete="email" required />
             </label>
             <label>
               <span>Experience</span>
-              <select name="experience" aria-label="Select years of experience" required>
+              <select name="Experience" aria-label="Select years of experience" required>
                 <option value="">Select experience</option>
                 <option>Fresher</option>
                 <option>0-1 years</option>
@@ -133,11 +138,11 @@
             </label>
             <label>
               <span>Resume Upload</span>
-              <input type="file" name="attachment" accept=".pdf,.doc,.docx" required />
+              <input type="file" name="Resume Attachment" accept=".pdf,.doc,.docx" required />
             </label>
             <label>
               <span>Message</span>
-              <textarea name="message" rows="4" placeholder="Tell us about your site/project experience"></textarea>
+              <textarea name="Message" rows="4" placeholder="Tell us about your site/project experience"></textarea>
             </label>
             <button class="primary-btn" type="submit">Email Application &amp; Resume <span aria-hidden="true">&#8599;</span></button>
             <p class="form-delivery-note">Your details and selected resume will be emailed to our hiring team.</p>

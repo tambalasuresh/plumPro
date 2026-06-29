@@ -198,6 +198,18 @@ modalCloseButtons.forEach((button) => button.addEventListener("click", closeCare
 emailApplicationForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   const submitButton = emailApplicationForm.querySelector('[type="submit"]');
+  const subjectInput = emailApplicationForm.querySelector("[data-application-subject]");
+  const formData = new FormData(emailApplicationForm);
+  const applicantName = String(formData.get("Full Name") || "").trim();
+  const position = String(formData.get("Position") || "").trim();
+
+  if (subjectInput) {
+    subjectInput.value = [
+      "New PlumbPro Tech Job Application",
+      applicantName || "Applicant",
+      position || "Open Position",
+    ].join(" - ");
+  }
 
   applicationToast?.classList.add("is-visible");
   if (submitButton) {
