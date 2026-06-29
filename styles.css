@@ -1838,6 +1838,12 @@ section {
   font-weight: 900;
 }
 
+.application-success .success-role {
+  margin-top: 0;
+  color: var(--blue);
+  font-weight: 900;
+}
+
 .success-actions {
   display: flex;
   flex-wrap: wrap;

@@ -25,6 +25,8 @@ const currentSlideLabel = document.querySelector("[data-slide-current]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const navLinks = document.querySelector(".nav-links");
 const historyBackButton = document.querySelector("[data-history-back]");
+const successName = document.querySelector("[data-success-name]");
+const successPosition = document.querySelector("[data-success-position]");
 const profileMenus = document.querySelectorAll(".profile-menu");
 const revealItems = document.querySelectorAll(
   ".reveal, .service-grid article, .project-grid article, .outcome-grid figure, .gallery-grid figure, .career-card, .application-panel"
@@ -205,19 +207,29 @@ historyBackButton?.addEventListener("click", () => {
   window.location.href = "careers.html";
 });
 
+if (successName || successPosition) {
+  const successParams = new URLSearchParams(window.location.search);
+  const submittedName = successParams.get("name")?.trim();
+  const submittedPosition = successParams.get("position")?.trim();
+
+  if (successName && submittedName) {
+    successName.textContent = submittedName;
+  }
+
+  if (successPosition && submittedPosition) {
+    successPosition.hidden = false;
+    successPosition.textContent = `Application for ${submittedPosition}`;
+  }
+}
+
 emailApplicationForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   const submitButton = emailApplicationForm.querySelector('[type="submit"]');
   const subjectInput = emailApplicationForm.querySelector("[data-application-subject]");
-  const applicantNameInput = emailApplicationForm.querySelector("[data-applicant-name]");
-  const fullNameCopy = emailApplicationForm.querySelector("[data-full-name-copy]");
+  const nextInput = emailApplicationForm.querySelector("[data-application-next]");
   const formData = new FormData(emailApplicationForm);
   const applicantName = String(formData.get("name") || "").trim();
   const position = String(formData.get("Position") || "").trim();
-
-  if (fullNameCopy) {
-    fullNameCopy.value = applicantName;
-  }
 
   if (subjectInput) {
     subjectInput.value = [
@@ -227,12 +239,18 @@ emailApplicationForm?.addEventListener("submit", (event) => {
     ].join(" - ");
   }
 
+  if (nextInput) {
+    const successUrl = new URL(nextInput.value);
+    successUrl.searchParams.set("name", applicantName || "Applicant");
+    successUrl.searchParams.set("position", position || "Open Position");
+    nextInput.value = successUrl.toString();
+  }
+
   applicationToast?.classList.add("is-visible");
   if (submitButton) {
     submitButton.disabled = true;
     submitButton.textContent = "Sending Application...";
   }
-  applicantNameInput?.setAttribute("name", "name");
 
   window.setTimeout(() => emailApplicationForm.submit(), 850);
 });
