@@ -222,29 +222,13 @@ if (successName || successPosition) {
   }
 }
 
-emailApplicationForm?.addEventListener("submit", (event) => {
+emailApplicationForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const submitButton = emailApplicationForm.querySelector('[type="submit"]');
-  const subjectInput = emailApplicationForm.querySelector("[data-application-subject]");
   const nextInput = emailApplicationForm.querySelector("[data-application-next]");
   const formData = new FormData(emailApplicationForm);
   const applicantName = String(formData.get("Name") || "").trim();
   const position = String(formData.get("Position") || "").trim();
-
-  if (subjectInput) {
-    subjectInput.value = [
-      "New PlumbPro Tech Job Application",
-      applicantName || "Applicant",
-      position || "Open Position",
-    ].join(" - ");
-  }
-
-  if (nextInput) {
-    const successUrl = new URL(nextInput.value);
-    successUrl.searchParams.set("name", applicantName || "Applicant");
-    successUrl.searchParams.set("position", position || "Open Position");
-    nextInput.value = successUrl.toString();
-  }
 
   applicationToast?.classList.add("is-visible");
   if (submitButton) {
@@ -252,7 +236,28 @@ emailApplicationForm?.addEventListener("submit", (event) => {
     submitButton.textContent = "Sending Application...";
   }
 
-  window.setTimeout(() => emailApplicationForm.submit(), 850);
+  try {
+    const response = await fetch(emailApplicationForm.action, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error("Application email failed");
+    }
+
+    const successUrl = new URL(nextInput?.value || "application-success.html", window.location.origin);
+    successUrl.searchParams.set("name", applicantName || "Applicant");
+    successUrl.searchParams.set("position", position || "Open Position");
+    window.location.href = successUrl.toString();
+  } catch (error) {
+    applicationToast?.classList.remove("is-visible");
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = "Email Application & Resume";
+    }
+    window.alert("Could not send your application. Please try again.");
+  }
 });
 
 contactForm?.addEventListener("submit", (event) => {
