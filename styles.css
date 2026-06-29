@@ -4026,6 +4026,77 @@ section.about-method .method-track article {
   min-height: 230px;
 }
 
+section.about-sectors.page-view.is-active {
+  display: grid !important;
+  gap: clamp(24px, 4vw, 42px);
+  min-height: auto;
+  padding-top: clamp(44px, 5vw, 66px);
+  padding-bottom: clamp(44px, 5vw, 66px);
+  background:
+    linear-gradient(90deg, rgba(245, 183, 46, 0.08), transparent 38%),
+    #fff;
+}
+
+section.about-sectors .section-heading {
+  max-width: 760px;
+  align-items: start;
+  text-align: left;
+}
+
+section.about-sectors .section-heading h2 {
+  font-size: clamp(1.9rem, 3.4vw, 3.65rem);
+  line-height: 1.04;
+}
+
+.sector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.sector-grid article {
+  position: relative;
+  min-height: clamp(240px, 28vw, 360px);
+  overflow: hidden;
+  border: 1px solid rgba(12, 37, 48, 0.1);
+  background: #071f33;
+  box-shadow: 0 22px 54px rgba(12, 37, 48, 0.12);
+}
+
+.sector-grid article::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 31, 51, 0.08), rgba(7, 31, 51, 0.76)),
+    linear-gradient(90deg, rgba(215, 58, 53, 0.26), transparent 46%);
+  content: "";
+}
+
+.sector-grid img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  transition: transform 260ms ease;
+}
+
+.sector-grid article:hover img {
+  transform: scale(1.04);
+}
+
+.sector-grid h3 {
+  position: absolute;
+  z-index: 1;
+  right: 22px;
+  bottom: 22px;
+  left: 22px;
+  max-width: 320px;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  line-height: 1.08;
+}
+
 section.about-director.page-view.is-active {
   display: grid !important;
   grid-template-columns: minmax(170px, 245px) minmax(0, 1fr);
@@ -4059,6 +4130,27 @@ section.about-director .about-director-copy {
 section.about-director .about-director-copy h2 {
   max-width: 760px;
   font-size: clamp(1.9rem, 3.4vw, 3.8rem);
+}
+
+.director-signoff {
+  display: grid;
+  gap: 4px;
+  width: fit-content;
+  margin-top: 24px;
+  padding: 16px 18px;
+  border-left: 4px solid var(--red);
+  background: rgba(245, 183, 46, 0.12);
+}
+
+.director-signoff strong {
+  color: var(--ink);
+  font-size: 1.02rem;
+}
+
+.director-signoff span {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 800;
 }
 
 section.about-trusted.page-view.is-active {
@@ -4159,6 +4251,14 @@ section.about-trusted .trusted-grid:hover {
     grid-template-columns: 1fr;
   }
 
+  .sector-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sector-grid article {
+    min-height: 260px;
+  }
+
   section.about-director.page-view.is-active {
     background: linear-gradient(180deg, #071f33 0 150px, #f7fbfc 150px 100%);
   }
@@ -4246,6 +4346,15 @@ section.about-trusted .trusted-grid:hover {
   section.about-stats.page-view.is-active {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  section.about-sectors.page-view.is-active {
+    padding-top: 38px;
+    padding-bottom: 38px;
+  }
+
+  .sector-grid article {
+    min-height: 220px;
   }
 
   section.about-director .about-director-copy {
