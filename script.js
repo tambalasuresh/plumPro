@@ -228,7 +228,7 @@ emailApplicationForm?.addEventListener("submit", (event) => {
   const subjectInput = emailApplicationForm.querySelector("[data-application-subject]");
   const nextInput = emailApplicationForm.querySelector("[data-application-next]");
   const formData = new FormData(emailApplicationForm);
-  const applicantName = String(formData.get("name") || "").trim();
+  const applicantName = String(formData.get("Name") || "").trim();
   const position = String(formData.get("Position") || "").trim();
 
   if (subjectInput) {
