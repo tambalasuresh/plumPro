@@ -4826,3 +4826,306 @@ section.intro.band.about-hero.page-view.is-active::after {
     overflow-wrap: anywhere;
   }
 }
+
+/* Leadership message, reference-style editorial layout */
+section.about-director.page-view.is-active {
+  grid-template-columns: minmax(230px, 320px) minmax(0, 1fr);
+  gap: clamp(30px, 4.5vw, 70px);
+  align-items: center;
+  padding: clamp(34px, 4.5vw, 58px) clamp(22px, 6vw, 76px);
+  background: #fff;
+}
+
+section.about-director.page-view.is-active::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: min(32vw, 460px);
+  background:
+    linear-gradient(90deg, rgba(8, 120, 191, 0.07), rgba(8, 120, 191, 0)),
+    #f7fbfc;
+  content: "";
+}
+
+section.about-director .vision-portrait.about-director-photo {
+  z-index: 1;
+  width: min(100%, 292px);
+  padding: 10px;
+  border: 1px solid rgba(12, 37, 48, 0.18);
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 0 18px 36px rgba(12, 37, 48, 0.22);
+}
+
+section.about-director .vision-portrait.about-director-photo::before {
+  border-top: 0;
+}
+
+section.about-director .vision-portrait.about-director-photo img {
+  aspect-ratio: 3 / 4;
+  border: 0;
+  object-fit: contain;
+  object-position: center top;
+  background: #f4f6f3;
+}
+
+section.about-director .vision-portrait.about-director-photo figcaption {
+  display: none;
+}
+
+section.about-director .about-director-copy {
+  max-width: 1180px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+section.about-director .about-director-copy::before {
+  position: static;
+  display: block;
+  margin: 0 0 8px;
+  color: var(--deep-blue);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.5rem, 5vw, 5.4rem);
+  font-weight: 900;
+  line-height: 0.58;
+  content: "\201C";
+}
+
+section.about-director .about-director-copy .section-kicker {
+  margin-bottom: 6px;
+  color: var(--red);
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+}
+
+section.about-director .about-director-copy h2 {
+  max-width: 1080px;
+  margin: 0 0 14px;
+  color: #071f33;
+  font-size: clamp(1.15rem, 1.5vw, 1.65rem);
+  font-weight: 800;
+  line-height: 1.42;
+  letter-spacing: 0;
+}
+
+section.about-director .about-director-copy p:not(.section-kicker) {
+  max-width: 1180px;
+  margin: 0 0 10px;
+  color: #111b22;
+  font-size: clamp(1rem, 1.08vw, 1.16rem);
+  line-height: 1.5;
+}
+
+.leader-signature {
+  display: grid;
+  gap: 2px;
+  margin-top: clamp(16px, 2vw, 24px);
+}
+
+.leader-signature strong {
+  color: var(--deep-blue);
+  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.leader-signature span {
+  color: #071f33;
+  font-size: clamp(1rem, 1.08vw, 1.14rem);
+  font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  section.about-director.page-view.is-active {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    background: #fff;
+  }
+
+  section.about-director.page-view.is-active::before {
+    width: 100%;
+    height: 180px;
+  }
+
+  section.about-director .vision-portrait.about-director-photo {
+    justify-self: center;
+    width: min(100%, 280px);
+  }
+
+  section.about-director .about-director-copy {
+    padding: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  section.about-director.page-view.is-active {
+    padding: 30px 16px;
+  }
+
+  section.about-director.page-view.is-active::before {
+    height: 150px;
+  }
+
+  section.about-director .vision-portrait.about-director-photo {
+    width: min(100%, 235px);
+  }
+
+  section.about-director .about-director-copy::before {
+    margin-bottom: 4px;
+    font-size: 3.6rem;
+  }
+
+  section.about-director .about-director-copy h2 {
+    font-size: clamp(1.08rem, 5.2vw, 1.45rem);
+    line-height: 1.35;
+  }
+
+  section.about-director .about-director-copy p:not(.section-kicker) {
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+}
+
+/* About hero poster visual */
+section.about-hero .about-poster-frame {
+  display: grid;
+  width: min(100%, 500px);
+  min-height: 0;
+  justify-self: center;
+  place-items: center;
+  margin: 0;
+  padding: clamp(10px, 1.4vw, 16px);
+  border: 1px solid rgba(12, 37, 48, 0.1);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 28px 76px rgba(12, 37, 48, 0.2);
+}
+
+section.about-hero .about-poster-frame::before {
+  display: none;
+  content: none;
+}
+
+section.about-hero .about-poster-image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-height: min(68vh, 680px);
+  border: 1px solid rgba(196, 132, 11, 0.3);
+  object-fit: contain;
+  box-shadow: 0 18px 45px rgba(7, 31, 51, 0.15);
+}
+
+@media (max-width: 980px) {
+  section.about-hero .about-poster-frame {
+    width: min(100%, 440px);
+    justify-self: center;
+  }
+
+  section.about-hero .about-poster-image {
+    max-height: none;
+  }
+}
+
+@media (max-width: 620px) {
+  section.about-hero .about-poster-frame {
+    width: min(100%, 330px);
+    padding: 8px;
+  }
+}
+
+/* Compact About hero with poster */
+section.intro.band.about-hero.page-view.is-active {
+  padding-top: calc(var(--header-height) + clamp(20px, 3vw, 36px)) !important;
+  padding-bottom: clamp(28px, 4vw, 48px);
+}
+
+section.about-hero .about-hero-grid {
+  grid-template-columns: minmax(0, 0.92fr) minmax(330px, 0.72fr);
+  min-height: clamp(420px, 50vh, 560px);
+  gap: clamp(28px, 4vw, 58px);
+}
+
+section.about-hero .about-hero-copy {
+  max-width: 620px;
+}
+
+section.about-hero .about-hero-copy .section-kicker {
+  margin-bottom: 12px;
+}
+
+section.about-hero .about-hero-copy h1 {
+  max-width: 580px;
+  margin-bottom: 18px;
+  font-size: clamp(2.5rem, 4vw, 4.65rem);
+  line-height: 1;
+}
+
+section.about-hero .about-hero-copy > p {
+  max-width: 590px;
+  margin-bottom: 18px;
+  font-size: clamp(0.98rem, 1vw, 1.08rem);
+  line-height: 1.62;
+}
+
+section.about-hero .about-actions {
+  margin-top: 24px;
+}
+
+section.about-hero .about-poster-frame {
+  width: min(100%, 430px);
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 22px 58px rgba(12, 37, 48, 0.18);
+}
+
+section.about-hero .about-poster-image {
+  max-height: min(62vh, 590px);
+}
+
+@media (max-width: 980px) {
+  section.about-hero .about-hero-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 28px;
+  }
+
+  section.about-hero .about-poster-frame {
+    width: min(100%, 380px);
+  }
+
+  section.about-hero .about-poster-image {
+    max-height: 540px;
+  }
+}
+
+@media (max-width: 620px) {
+  section.intro.band.about-hero.page-view.is-active {
+    padding-top: calc(var(--header-height) + 18px) !important;
+    padding-bottom: 30px;
+  }
+
+  section.about-hero .about-hero-copy h1 {
+    font-size: clamp(2.15rem, 10vw, 3.15rem);
+  }
+
+  section.about-hero .about-hero-copy > p {
+    margin-bottom: 14px;
+    line-height: 1.55;
+  }
+
+  section.about-hero .about-actions {
+    margin-top: 18px;
+  }
+
+  section.about-hero .about-poster-frame {
+    width: min(100%, 300px);
+  }
+
+  section.about-hero .about-poster-image {
+    max-height: none;
+  }
+}
