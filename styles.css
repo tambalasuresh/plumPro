@@ -4164,6 +4164,23 @@ section.about-stats.page-view.is-active div > span:not(.stat-icon) {
   padding-right: clamp(28px, 3vw, 56px);
   font-size: clamp(0.95rem, 1.15vw, 1.22rem);
   line-height: 1.28;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+section.about-stats.page-view.is-active > div:nth-child(3) {
+  grid-template-columns: 1fr;
+  align-content: center;
+  gap: 10px;
+}
+
+section.about-stats.page-view.is-active > div:nth-child(3) strong {
+  font-size: clamp(2.35rem, 3.25vw, 4rem);
+}
+
+section.about-stats.page-view.is-active > div:nth-child(3) > span:not(.stat-icon) {
+  max-width: none;
+  padding-right: clamp(82px, 7vw, 124px);
 }
 
 @media (max-width: 1440px) {
@@ -4173,6 +4190,16 @@ section.about-stats.page-view.is-active div > span:not(.stat-icon) {
 
   section.about-stats.page-view.is-active div > span:not(.stat-icon) {
     max-width: 240px;
+  }
+
+  section.about-stats.page-view.is-active > div:nth-child(3) {
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    gap: clamp(14px, 1.7vw, 24px);
+  }
+
+  section.about-stats.page-view.is-active > div:nth-child(3) > span:not(.stat-icon) {
+    max-width: 240px;
+    padding-right: clamp(28px, 3vw, 56px);
   }
 }
 
@@ -4209,6 +4236,16 @@ section.about-stats.page-view.is-active div > span:not(.stat-icon) {
     width: 74px;
     height: 74px;
     right: 14px;
+  }
+
+  section.about-stats.page-view.is-active > div:nth-child(3) {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  section.about-stats.page-view.is-active > div:nth-child(3) > span:not(.stat-icon) {
+    max-width: none;
+    padding-right: 70px;
   }
 }
 
