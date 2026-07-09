@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /application-success.html
+
+Sitemap: https://plumbprotech.in/sitemap.xml
