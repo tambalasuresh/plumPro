@@ -8,6 +8,7 @@ const jobPosition = document.querySelector("[data-job-position]");
 const jobApplyButtons = document.querySelectorAll("[data-job]");
 const emailApplicationForm = document.querySelector("[data-email-application-form]");
 const applicationToast = document.querySelector("[data-application-toast]");
+const applicationStatus = document.querySelector("[data-application-status]");
 const careerModal = document.querySelector("[data-career-modal]");
 const modalCloseButtons = document.querySelectorAll("[data-modal-close]");
 const modalJobTitle = document.querySelector("[data-modal-job-title]");
@@ -222,14 +223,14 @@ if (successName || successPosition) {
   }
 }
 
-emailApplicationForm?.addEventListener("submit", (event) => {
+emailApplicationForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const submitButton = emailApplicationForm.querySelector('[type="submit"]');
   const subjectInput = emailApplicationForm.querySelector("[data-application-subject]");
   const nextInput = emailApplicationForm.querySelector("[data-application-next]");
-  const formData = new FormData(emailApplicationForm);
-  const applicantName = String(formData.get("Name") || "").trim();
-  const position = String(formData.get("Position") || "").trim();
+  const currentFormData = new FormData(emailApplicationForm);
+  const applicantName = String(currentFormData.get("Name") || "").trim();
+  const position = String(currentFormData.get("Position") || "").trim();
 
   if (subjectInput) {
     subjectInput.value = [
@@ -240,10 +241,15 @@ emailApplicationForm?.addEventListener("submit", (event) => {
   }
 
   if (nextInput) {
-    const successUrl = new URL(nextInput.value);
+    const successUrl = new URL(nextInput.value, window.location.href);
     successUrl.searchParams.set("name", applicantName || "Applicant");
     successUrl.searchParams.set("position", position || "Open Position");
     nextInput.value = successUrl.toString();
+  }
+
+  applicationStatus?.classList.remove("is-error");
+  if (applicationStatus) {
+    applicationStatus.textContent = "Uploading your application...";
   }
 
   applicationToast?.classList.add("is-visible");
@@ -252,7 +258,43 @@ emailApplicationForm?.addEventListener("submit", (event) => {
     submitButton.textContent = "Sending Application...";
   }
 
-  window.setTimeout(() => emailApplicationForm.submit(), 850);
+  try {
+    const formData = new FormData(emailApplicationForm);
+    const applicantEmail = String(formData.get("Email") || "").trim();
+    if (applicantEmail) {
+      formData.set("_replyto", applicantEmail);
+    }
+
+    const response = await fetch(emailApplicationForm.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`FormSubmit returned ${response.status}`);
+    }
+
+    const successUrl = nextInput
+      ? nextInput.value
+      : "application-success.html";
+    window.location.assign(successUrl);
+  } catch (error) {
+    console.error("Application form submission failed", error);
+    applicationToast?.classList.remove("is-visible");
+    applicationStatus?.classList.add("is-error");
+    if (applicationStatus) {
+      applicationStatus.textContent =
+        "The application service is not responding. Please email your details and resume to infoplumbprotech@gmail.com.";
+    }
+
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = "Email Application & Resume";
+    }
+  }
 });
 
 contactForm?.addEventListener("submit", (event) => {
