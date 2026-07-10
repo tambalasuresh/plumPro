@@ -7,8 +7,8 @@ const formStatus = document.querySelector("[data-form-status]");
 const jobPosition = document.querySelector("[data-job-position]");
 const jobApplyButtons = document.querySelectorAll("[data-job]");
 const emailApplicationForm = document.querySelector("[data-email-application-form]");
-const applicationToast = document.querySelector("[data-application-toast]");
 const applicationStatus = document.querySelector("[data-application-status]");
+const applicationEmailLink = document.querySelector("[data-application-email-link]");
 const careerModal = document.querySelector("[data-career-modal]");
 const modalCloseButtons = document.querySelectorAll("[data-modal-close]");
 const modalJobTitle = document.querySelector("[data-modal-job-title]");
@@ -33,6 +33,7 @@ const revealItems = document.querySelectorAll(
   ".reveal, .service-grid article, .project-grid article, .outcome-grid figure, .gallery-grid figure, .career-card, .application-panel"
 );
 const whatsAppNumber = "919840038641";
+const hiringEmail = "infoPlumbprotech@gmail.com";
 let currentSlide = 0;
 let slideTimer;
 
@@ -174,11 +175,16 @@ document.addEventListener("keydown", (event) => {
 
 jobApplyButtons.forEach((button) => {
   button.addEventListener("click", () => {
+    const selectedJob = button.dataset.job || "";
     if (jobPosition) {
-      jobPosition.value = button.dataset.job || "";
+      const matchingOption = Array.from(jobPosition.options).some((option) => option.value === selectedJob);
+      if (selectedJob && !matchingOption) {
+        jobPosition.add(new Option(selectedJob, selectedJob));
+      }
+      jobPosition.value = selectedJob;
     }
     if (modalJobTitle) {
-      modalJobTitle.textContent = button.dataset.job || "Join PlumbPro Tech";
+      modalJobTitle.textContent = selectedJob || "Join Plumbpro Tech";
     }
     if (modalRoleLabel) {
       modalRoleLabel.textContent = button.dataset.jobLabel || "Open position";
@@ -223,77 +229,83 @@ if (successName || successPosition) {
   }
 }
 
-emailApplicationForm?.addEventListener("submit", async (event) => {
+emailApplicationForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   const submitButton = emailApplicationForm.querySelector('[type="submit"]');
-  const subjectInput = emailApplicationForm.querySelector("[data-application-subject]");
-  const nextInput = emailApplicationForm.querySelector("[data-application-next]");
-  const currentFormData = new FormData(emailApplicationForm);
-  const applicantName = String(currentFormData.get("Name") || "").trim();
-  const position = String(currentFormData.get("Position") || "").trim();
-
-  if (subjectInput) {
-    subjectInput.value = [
-      "New PlumbPro Tech Job Application",
-      applicantName || "Applicant",
-      position || "Open Position",
-    ].join(" - ");
+  if (jobPosition && !jobPosition.value) {
+    jobPosition.value = "General Application";
   }
 
-  if (nextInput) {
-    const successUrl = new URL(nextInput.value, window.location.href);
-    successUrl.searchParams.set("name", applicantName || "Applicant");
-    successUrl.searchParams.set("position", position || "Open Position");
-    nextInput.value = successUrl.toString();
+  if (!emailApplicationForm.reportValidity()) {
+    applicationStatus?.classList.add("is-error");
+    if (applicationStatus) {
+      applicationStatus.textContent = "Please fill the required details before sending.";
+    }
+    return;
   }
+
+  const formData = new FormData(emailApplicationForm);
+  const applicantName = String(formData.get("Name") || "").trim();
+  const phone = String(formData.get("Phone") || "").trim();
+  const applicantEmail = String(formData.get("Email") || "").trim();
+  const position = String(formData.get("Position") || "").trim();
+  const experience = String(formData.get("Experience") || "").trim();
+  const message = String(formData.get("Message") || "").trim() || "Not provided";
+  const emailSubject = [
+    "New Plumbpro Tech Job Application",
+    applicantName || "Applicant",
+    position || "Open Position",
+  ].join(" - ");
+  const emailBody = [
+    "New Plumbpro Tech job application",
+    "",
+    `Position: ${position}`,
+    `Full Name: ${applicantName}`,
+    `Phone Number: ${phone}`,
+    `Email ID: ${applicantEmail}`,
+    `Experience: ${experience}`,
+    "",
+    `Message: ${message}`,
+  ].join("\n");
 
   applicationStatus?.classList.remove("is-error");
   if (applicationStatus) {
-    applicationStatus.textContent = "Uploading your application...";
+    applicationStatus.textContent = "Opening email with your application details.";
   }
 
-  applicationToast?.classList.add("is-visible");
   if (submitButton) {
-    submitButton.disabled = true;
-    submitButton.textContent = "Sending Application...";
+    submitButton.textContent = "Opening Email...";
   }
 
-  try {
-    const formData = new FormData(emailApplicationForm);
-    const applicantEmail = String(formData.get("Email") || "").trim();
-    if (applicantEmail) {
-      formData.set("_replyto", applicantEmail);
+  const emailUrl = new URL("https://mail.google.com/mail/");
+  emailUrl.searchParams.set("view", "cm");
+  emailUrl.searchParams.set("fs", "1");
+  emailUrl.searchParams.set("to", hiringEmail);
+  emailUrl.searchParams.set("su", emailSubject);
+  emailUrl.searchParams.set("body", emailBody);
+
+  if (applicationEmailLink) {
+    applicationEmailLink.href = emailUrl.toString();
+  }
+
+  const emailWindow = window.open(emailUrl.toString(), "_blank");
+  if (emailWindow) {
+    emailApplicationForm.reset();
+    if (applicationStatus) {
+      applicationStatus.textContent = "";
     }
-
-    const response = await fetch(emailApplicationForm.action, {
-      method: "POST",
-      body: formData,
-      headers: {
-        Accept: "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`FormSubmit returned ${response.status}`);
-    }
-
-    const successUrl = nextInput
-      ? nextInput.value
-      : "application-success.html";
-    window.location.assign(successUrl);
-  } catch (error) {
-    console.error("Application form submission failed", error);
-    applicationToast?.classList.remove("is-visible");
+  } else {
     applicationStatus?.classList.add("is-error");
     if (applicationStatus) {
       applicationStatus.textContent =
-        "The application service is not responding. Please email your details and resume to infoplumbprotech@gmail.com.";
+        "Popup blocked. Please use the direct email link below.";
     }
+  }
 
-    if (submitButton) {
-      submitButton.disabled = false;
-      submitButton.textContent = "Email Application & Resume";
-    }
+  if (submitButton) {
+    window.setTimeout(() => {
+      submitButton.textContent = "Send Application by Email";
+    }, 1200);
   }
 });
 
@@ -310,7 +322,7 @@ contactForm?.addEventListener("submit", (event) => {
   const projectDetails = String(formData.get("projectDetails")).trim();
 
   const whatsAppMessage = [
-    "New PlumbPro Tech enquiry",
+    "New Plumbpro Tech enquiry",
     "",
     `Contact Person Name: ${contactPerson}`,
     `Name of Company: ${companyName}`,
